@@ -1,0 +1,15 @@
+﻿using Code.Gameplay.Cameras.Systems;
+using Code.Infrastructure.Systems;
+
+namespace Code.Gameplay.Features.Hero.Systems
+{
+public class HeroFeature : Feature
+{
+    public HeroFeature(ISystemFactory systems)
+    {
+        Add(systems.Create<SetHeroDirectionByInputSystem>());
+        Add(systems.Create<CameraFollowHeroSystem>());
+        Add(systems.Create<AnimateHeroMovementSystem>());
+    }
+}
+}

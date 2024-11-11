@@ -33,22 +33,21 @@ public sealed partial class GameMatcher {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public DefaultNamespace.WorldPosition worldPosition { get { return (DefaultNamespace.WorldPosition)GetComponent(GameComponentsLookup.WorldPosition); } }
-    public UnityEngine.Vector3 WorldPosition { get { return worldPosition.Value; } }
+    public Code.Gameplay.Common.WorldPosition worldPosition { get { return (Code.Gameplay.Common.WorldPosition)GetComponent(GameComponentsLookup.WorldPosition); } }
     public bool hasWorldPosition { get { return HasComponent(GameComponentsLookup.WorldPosition); } }
 
     public GameEntity AddWorldPosition(UnityEngine.Vector3 newValue) {
         var index = GameComponentsLookup.WorldPosition;
-        var component = (DefaultNamespace.WorldPosition)CreateComponent(index, typeof(DefaultNamespace.WorldPosition));
-        component.Value = newValue;
+        var component = (Code.Gameplay.Common.WorldPosition)CreateComponent(index, typeof(Code.Gameplay.Common.WorldPosition));
+        component.value = newValue;
         AddComponent(index, component);
         return this;
     }
 
     public GameEntity ReplaceWorldPosition(UnityEngine.Vector3 newValue) {
         var index = GameComponentsLookup.WorldPosition;
-        var component = (DefaultNamespace.WorldPosition)CreateComponent(index, typeof(DefaultNamespace.WorldPosition));
-        component.Value = newValue;
+        var component = (Code.Gameplay.Common.WorldPosition)CreateComponent(index, typeof(Code.Gameplay.Common.WorldPosition));
+        component.value = newValue;
         ReplaceComponent(index, component);
         return this;
     }

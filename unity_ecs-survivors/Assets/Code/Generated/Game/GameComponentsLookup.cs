@@ -8,18 +8,96 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Id = 0;
-    public const int WorldPosition = 1;
+    public const int Destructed = 0;
+    public const int SelfDestructTimer = 1;
+    public const int View = 2;
+    public const int Damage = 3;
+    public const int DamageTakenAnimator = 4;
+    public const int Id = 5;
+    public const int SpriteRenderer = 6;
+    public const int Transform = 7;
+    public const int WorldPosition = 8;
+    public const int Enemy = 9;
+    public const int EnemyAnimator = 10;
+    public const int EnemyTypeId = 11;
+    public const int Hero = 12;
+    public const int HeroAnimator = 13;
+    public const int CurrentHP = 14;
+    public const int MaxHP = 15;
+    public const int Direction = 16;
+    public const int Moving = 17;
+    public const int Speed = 18;
+    public const int TurnAlongDirection = 19;
+    public const int CollectTargetsInterval = 20;
+    public const int CollectTargetsTimer = 21;
+    public const int LayerMask = 22;
+    public const int Radius = 23;
+    public const int ReadyToCollectTargets = 24;
+    public const int TargetsBuffer = 25;
+    public const int AxisInput = 26;
+    public const int Input = 27;
 
-    public const int TotalComponents = 2;
+    public const int TotalComponents = 28;
 
     public static readonly string[] componentNames = {
+        "Destructed",
+        "SelfDestructTimer",
+        "View",
+        "Damage",
+        "DamageTakenAnimator",
         "Id",
-        "WorldPosition"
+        "SpriteRenderer",
+        "Transform",
+        "WorldPosition",
+        "Enemy",
+        "EnemyAnimator",
+        "EnemyTypeId",
+        "Hero",
+        "HeroAnimator",
+        "CurrentHP",
+        "MaxHP",
+        "Direction",
+        "Moving",
+        "Speed",
+        "TurnAlongDirection",
+        "CollectTargetsInterval",
+        "CollectTargetsTimer",
+        "LayerMask",
+        "Radius",
+        "ReadyToCollectTargets",
+        "TargetsBuffer",
+        "AxisInput",
+        "Input"
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(DefaultNamespace.Id),
-        typeof(DefaultNamespace.WorldPosition)
+        typeof(Code.Common.Destructed),
+        typeof(Code.Common.SelfDestructTimer),
+        typeof(Code.Common.View),
+        typeof(Code.Gameplay.Common.Damage),
+        typeof(Code.Gameplay.Common.DamageTakenAnimatorComponent),
+        typeof(Code.Gameplay.Common.Id),
+        typeof(Code.Gameplay.Common.SpriteRendererComponent),
+        typeof(Code.Gameplay.Common.TransformComponent),
+        typeof(Code.Gameplay.Common.WorldPosition),
+        typeof(Code.Gameplay.Features.Enemies.Enemy),
+        typeof(Code.Gameplay.Features.Enemies.EnemyAnimatorComponent),
+        typeof(Code.Gameplay.Features.Enemies.EnemyTypeIdComponent),
+        typeof(Code.Gameplay.Features.Hero.Hero),
+        typeof(Code.Gameplay.Features.Hero.HeroAnimatorComponent),
+        typeof(Code.Gameplay.Features.Lifetime.CurrentHP),
+        typeof(Code.Gameplay.Features.Lifetime.MaxHP),
+        typeof(Code.Gameplay.Features.Movement.MovementComponents.Direction),
+        typeof(Code.Gameplay.Features.Movement.MovementComponents.Moving),
+        typeof(Code.Gameplay.Features.Movement.MovementComponents.Speed),
+        typeof(Code.Gameplay.Features.Movement.MovementComponents.TurnAlongDirection),
+        typeof(Code.Gameplay.Features.TargetCollection.CollectTargetsInterval),
+        typeof(Code.Gameplay.Features.TargetCollection.CollectTargetsTimer),
+        typeof(Code.Gameplay.Features.TargetCollection.LayerMaskComponent),
+        typeof(Code.Gameplay.Features.TargetCollection.RadiusComponent),
+        typeof(Code.Gameplay.Features.TargetCollection.ReadyToCollectTargets),
+        typeof(Code.Gameplay.Features.TargetCollection.TargetsBuffer),
+        typeof(Code.Gameplay.Input.Service.InputComponents.AxisInput),
+        typeof(Code.Gameplay.Input.Service.InputComponents.Input)
     };
 }

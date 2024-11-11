@@ -1,3 +1,4 @@
+using System;
 using Code.Gameplay.Cameras.Provider;
 using Code.Gameplay.Common.Collisions;
 using Code.Gameplay.Common.Physics;
@@ -9,6 +10,8 @@ using Code.Gameplay.StaticData;
 using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.Identifiers;
 using Code.Infrastructure.Loading;
+using Code.Infrastructure.Systems;
+using Entitas;
 using Zenject;
 
 namespace Code.Infrastructure.Installers
@@ -21,6 +24,7 @@ namespace Code.Infrastructure.Installers
       BindInfrastructureServices();
       BindAssetManagementServices();
       BindCommonServices();
+      BindSystemFactory();
       BindContexts();
       BindGameplayServices();
       BindCameraProvider();
@@ -63,6 +67,8 @@ namespace Code.Infrastructure.Installers
       Container.Bind<ITimeService>().To<UnityTimeService>().AsSingle();
       Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
     }
+
+    private void BindSystemFactory() => Container.Bind<ISystemFactory>().To<SystemFactory>().AsSingle();
 
     private void BindInputService()
     {
