@@ -33,7 +33,7 @@ public class $name$ : IExecuteSystem
 
     public $name$(GameContext game)
     {
-        $_entities$ = game.GetGroup(GameMatcher.AllOf(GameMatcher.$matcher$));
+        $_entities$ = game.GetGroup(GameMatcher.AllOf(GameMatcher.AllOf($matcher$)));
     }
 
     public void Execute()
