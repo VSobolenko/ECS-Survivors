@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using Code.Gameplay.Common.Physics;
 using Entitas;
+using UnityEngine;
 
 namespace Code.Gameplay.Features.TargetCollection.Systems
 {
@@ -11,7 +10,7 @@ public class CastForTargetsWithLimitSystem : IExecuteSystem, ITearDownSystem
     private readonly IPhysicsService _physicsService;
     private readonly IGroup<GameEntity> _ready;
     private readonly List<GameEntity> _buffer = new (64);
-    private readonly GameEntity[] _targetCastBuffer = new GameEntity[128];
+    private GameEntity[] _targetCastBuffer = new GameEntity[128];
 
     public CastForTargetsWithLimitSystem(GameContext gameContext, IPhysicsService physicsService)
     {
@@ -32,12 +31,24 @@ public class CastForTargetsWithLimitSystem : IExecuteSystem, ITearDownSystem
     {
         foreach (var entity in _ready.GetEntities(_buffer))
         {
-            entity.targetsBuffer.value.AddRange(TargetCountInRadius(entity));
+            // entity.targetsBuffer.value.AddRange(TargetCountInRadius(entity));
 
+            for (int i = 0; i < Mathf.Min(TargetCountInRadius(entity), entity.targetLimit.value); i++)
+            {
+                var targetId = _targetCastBuffer[i].id.id;
+                
+                if (!AlreadyProcess(entity, targetId))
+                {
+                    entity.targetsBuffer.value.Add(targetId);
+                    entity.processedTargets.value.Add(targetId);
+                }
+            }
             if (!entity.isCollectingTargetsContinuously)
                 entity.isReadyToCollectTargets = false;
         }
     }
+
+    private bool AlreadyProcess(GameEntity entity, int targetId) => entity.processedTargets.value.Contains(targetId);
 
     private int TargetCountInRadius(GameEntity entity) =>
         _physicsService.CircleCastNonAlloc(entity.worldPosition.value, entity.radius.value, entity.layerMask.value,

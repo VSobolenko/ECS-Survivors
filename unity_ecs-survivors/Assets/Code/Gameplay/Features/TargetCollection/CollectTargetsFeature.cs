@@ -7,8 +7,9 @@ public class CollectTargetsFeature : Feature
 {
     public CollectTargetsFeature(ISystemFactory systemFactory)
     {
-        Add(systemFactory.Create<CastForTargetsNoLimitSystem>());
         Add(systemFactory.Create<CollectTargetIntervalSystems>());
+        Add(systemFactory.Create<CastForTargetsNoLimitSystem>());
+        Add(systemFactory.Create<CastForTargetsWithLimitSystem>());
         Add(systemFactory.Create<CleanupTargetBuffersSystem>());
     }
 }

@@ -10,5 +10,6 @@ public class MovementComponents
     [Game] public class Moving : IComponent {  }
     [Game] public class MovementAvailable : IComponent {  }
     [Game] public class TurnAlongDirection : IComponent {  }
+    [Game] public class RotationAlignedAlongDirection : IComponent {  }
 }
 }

@@ -10,10 +10,10 @@ public class FinalizeHeroDeathProcessingSystem : IExecuteSystem
 
     public FinalizeHeroDeathProcessingSystem(GameContext game)
     {
-        _heroes = game.GetGroup(GameMatcher.AllOf(GameMatcher.AllOf(
+        _heroes = game.GetGroup(GameMatcher.AllOf(
                                                       GameMatcher.Hero,
                                                       GameMatcher.Dead,
-                                                      GameMatcher.ProcessingDeath)));
+                                                      GameMatcher.ProcessingDeath));
     }
 
     public void Execute()

@@ -8,18 +8,16 @@ public class BindEntityViewFromPathSystem : IExecuteSystem
 {
     private readonly IEntityViewFactory _entityViewFactory;
     private readonly IGroup<GameEntity> _entities;
-    private readonly List<GameEntity> _buffer = new (32);
+    private readonly List<GameEntity> _buffer = new(32);
 
     public BindEntityViewFromPathSystem(GameContext game, IEntityViewFactory entityViewFactory)
     {
         _entityViewFactory = entityViewFactory;
         _entities = game.GetGroup(GameMatcher.AllOf(GameMatcher
-                                                    .AllOf(
-                                                        GameMatcher.ViewPath
-                                                    )
-                                                    .NoneOf(
-                                                        GameMatcher.View
-                                                    )));
+                                                        .ViewPath)
+                                             .NoneOf(
+                                                 GameMatcher.View
+                                             ));
     }
 
     public void Execute()

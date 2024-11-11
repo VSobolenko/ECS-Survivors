@@ -8,15 +8,15 @@ public class CooldownSystem : IExecuteSystem
 {
     private readonly ITimeService _timeService;
     private readonly IGroup<GameEntity> _cooldownables;
-    private readonly List<GameEntity> _buffer = new (32);
+    private readonly List<GameEntity> _buffer = new(32);
 
     public CooldownSystem(GameContext game, ITimeService timeService)
     {
         _timeService = timeService;
-        _cooldownables = game.GetGroup(GameMatcher.AllOf(GameMatcher.AllOf(
-                                                             GameMatcher.Cooldown, 
-                                                             GameMatcher.CooldownLeft
-                                                         )));
+        _cooldownables = game.GetGroup(GameMatcher.AllOf(
+                                           GameMatcher.Cooldown,
+                                           GameMatcher.CooldownLeft
+                                       ));
     }
 
     public void Execute()

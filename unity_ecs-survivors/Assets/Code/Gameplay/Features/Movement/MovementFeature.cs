@@ -10,6 +10,7 @@ public class MovementFeature : Feature
         Add(systems.Create<DirectionalDeltaMoveSystem>());
         Add(systems.Create<TurnAlongDirectionSystem>());
         Add(systems.Create<UpdateTransformPositionSystem>());
+        Add(systems.Create<RotateAlongDirectionSystem>());
     }
 }
 }

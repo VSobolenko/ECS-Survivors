@@ -10,10 +10,10 @@ public class FinalizeEnemyDeathProcessingSystem : IExecuteSystem
 
     public FinalizeEnemyDeathProcessingSystem(GameContext game)
     {
-        _entities = game.GetGroup(GameMatcher.AllOf(GameMatcher.AllOf(
-                                                        GameMatcher.Enemy,
-                                                        GameMatcher.Dead,
-                                                        GameMatcher.ProcessingDeath)));
+        _entities = game.GetGroup(GameMatcher.AllOf(
+                                      GameMatcher.Enemy,
+                                      GameMatcher.Dead,
+                                      GameMatcher.ProcessingDeath));
     }
 
     public void Execute()

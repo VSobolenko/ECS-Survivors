@@ -9,12 +9,12 @@ public class HeroDeathSystem : IExecuteSystem
     public HeroDeathSystem(GameContext game)
     {
         _entities = game.GetGroup(GameMatcher
-                                      .AllOf(GameMatcher.AllOf(
-                                                 GameMatcher.Hero,
-                                                 GameMatcher.Dead,
-                                                 GameMatcher.HeroAnimator,
-                                                 GameMatcher.ProcessingDeath
-                                             )));
+                                      .AllOf(
+                                          GameMatcher.Hero,
+                                          GameMatcher.Dead,
+                                          GameMatcher.HeroAnimator,
+                                          GameMatcher.ProcessingDeath
+                                      ));
     }
 
     public void Execute()

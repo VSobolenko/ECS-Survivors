@@ -14,12 +14,10 @@ public class BindEntityViewFromPrefabSystem : IExecuteSystem
     {
         _entityViewFactory = entityViewFactory;
         _entities = game.GetGroup(GameMatcher.AllOf(GameMatcher
-                                                    .AllOf(
-                                                        GameMatcher.ViewPrefab
-                                                    )
+                                                    .ViewPrefab)
                                                     .NoneOf(
                                                         GameMatcher.View
-                                                    )));
+                                                    ));
     }
 
     public void Execute()

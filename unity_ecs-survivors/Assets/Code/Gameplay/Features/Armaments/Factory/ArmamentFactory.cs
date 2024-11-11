@@ -12,11 +12,13 @@ public class ArmamentFactory : IArmamentFactory
 {
     private readonly IIdentifierService _identifierService;
     private readonly IStaticDataService _staticDataService;
+    private int TargetBufferSize = 16;
 
     public ArmamentFactory(IIdentifierService identifierService, IStaticDataService staticDataService)
     {
         _identifierService = identifierService;
         _staticDataService = staticDataService;
+        TargetBufferSize = 16;
     }
 
     public GameEntity CreateVegetableBolt(int level, Vector3 at)
@@ -31,7 +33,8 @@ public class ArmamentFactory : IArmamentFactory
                            .AddSpeed(setup.speed)
                            .AddDamage(1)
                            .AddRadius(setup.contactRadius)
-                           .AddTargetsBuffer(new List<int>(16))
+                           .AddTargetsBuffer(new List<int>(TargetBufferSize))
+                           .AddProcessedTargets(new List<int>(TargetBufferSize))
                            .AddLayerMask(CollisionLayer.Enemy.AsMask())
                            .AddTargetLimit(setup.pierce)
                            .With(x => x.isArmament = true)
