@@ -15,7 +15,7 @@ public class AnimateHeroMovementSystem : IExecuteSystem
     {
         foreach (var hero in _heroes)
         {
-            if(hero.isMoving)
+            if (hero.isMoving)
                 hero.heroAnimator.heroAnimator.PlayMove();
             else
                 hero.heroAnimator.heroAnimator.PlayIdle();

@@ -10,6 +10,9 @@ public static class TargetCollectionEntityExtension
         if (entity.hasDamageTakenAnimator)
             entity.RemoveDamageTakenAnimator();
 
+        if (entity.hasCollectTargetsTimer)
+            entity.RemoveCollectTargetsTimer();
+        
         entity.isReadyToCollectTargets = false;
 
         return entity;

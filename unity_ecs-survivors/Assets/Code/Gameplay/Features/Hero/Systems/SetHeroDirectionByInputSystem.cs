@@ -10,7 +10,10 @@ public class SetHeroDirectionByInputSystem : IExecuteSystem
     public SetHeroDirectionByInputSystem(GameContext game)
     {
         _heroes = game.GetGroup(GameMatcher.Hero);
-        _inputs = game.GetGroup(GameMatcher.Input);
+        _inputs = game.GetGroup(GameMatcher.AllOf(
+                                    GameMatcher.Input,
+                                    GameMatcher.MovementAvailable
+                                    ));
     }
 
     public void Execute()

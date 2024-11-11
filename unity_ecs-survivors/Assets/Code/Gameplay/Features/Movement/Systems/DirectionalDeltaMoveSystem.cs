@@ -17,7 +17,9 @@ public class DirectionalDeltaMoveSystem : IExecuteSystem
                 GameMatcher.WorldPosition,
                 GameMatcher.Direction,
                 GameMatcher.Moving,
-                GameMatcher.Speed));
+                GameMatcher.MovementAvailable,
+                GameMatcher.Speed
+                ));
     }
 
     public void Execute()

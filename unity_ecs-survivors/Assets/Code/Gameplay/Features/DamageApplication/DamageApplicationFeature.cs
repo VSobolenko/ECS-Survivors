@@ -8,7 +8,6 @@ public class DamageApplicationFeature : Feature
     public DamageApplicationFeature(ISystemFactory systemFactory)
     {
         Add(systemFactory.Create<ApplyDamageOnTargets>());
-        Add(systemFactory.Create<DestructOnZeroHpSystem>());
     }
 }
 }
