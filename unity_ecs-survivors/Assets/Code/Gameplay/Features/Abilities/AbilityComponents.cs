@@ -2,6 +2,7 @@
 
 namespace Code.Gameplay.Features.Abilities
 {
-[Game] public class AbilityIDComponent : IComponent { public AbilityID value; }
+  [Game] public class AbilityIdComponent : IComponent { public AbilityId Value; }
+
 [Game] public class VegetableBoltAbility : IComponent { }
 }

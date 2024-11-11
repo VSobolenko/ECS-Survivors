@@ -6,7 +6,7 @@ using Code.Gameplay.Common.Random;
 using Code.Gameplay.Common.Time;
 using Code.Gameplay.Features.Abilities.Factory;
 using Code.Gameplay.Features.Armaments.Factory;
-using Code.Gameplay.Features.Enemies.Registrars.Factory;
+using Code.Gameplay.Features.Enemies.Factory;
 using Code.Gameplay.Features.Hero.Factory;
 using Code.Gameplay.Input.Service;
 using Code.Gameplay.Levels;

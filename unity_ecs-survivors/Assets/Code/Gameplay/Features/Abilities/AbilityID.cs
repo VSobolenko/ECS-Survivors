@@ -1,8 +1,8 @@
-﻿namespace Code.Gameplay.Features.Abilities
+namespace Code.Gameplay.Features.Abilities
 {
-public enum AbilityID : byte
-{
+  public enum AbilityId
+  {
     Unknown = 0,
     VegetableBolt = 1,
-}
+  }
 }

@@ -34,12 +34,13 @@ public sealed partial class GameMatcher {
 public partial class GameEntity {
 
     public Code.Gameplay.Features.TargetCollection.CollectTargetsTimer collectTargetsTimer { get { return (Code.Gameplay.Features.TargetCollection.CollectTargetsTimer)GetComponent(GameComponentsLookup.CollectTargetsTimer); } }
+    public float CollectTargetsTimer { get { return collectTargetsTimer.Value; } }
     public bool hasCollectTargetsTimer { get { return HasComponent(GameComponentsLookup.CollectTargetsTimer); } }
 
     public GameEntity AddCollectTargetsTimer(float newValue) {
         var index = GameComponentsLookup.CollectTargetsTimer;
         var component = (Code.Gameplay.Features.TargetCollection.CollectTargetsTimer)CreateComponent(index, typeof(Code.Gameplay.Features.TargetCollection.CollectTargetsTimer));
-        component.value = newValue;
+        component.Value = newValue;
         AddComponent(index, component);
         return this;
     }
@@ -47,7 +48,7 @@ public partial class GameEntity {
     public GameEntity ReplaceCollectTargetsTimer(float newValue) {
         var index = GameComponentsLookup.CollectTargetsTimer;
         var component = (Code.Gameplay.Features.TargetCollection.CollectTargetsTimer)CreateComponent(index, typeof(Code.Gameplay.Features.TargetCollection.CollectTargetsTimer));
-        component.value = newValue;
+        component.Value = newValue;
         ReplaceComponent(index, component);
         return this;
     }

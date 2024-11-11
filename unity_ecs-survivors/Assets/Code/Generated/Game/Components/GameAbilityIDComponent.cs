@@ -8,17 +8,17 @@
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherAbilityID;
+    static Entitas.IMatcher<GameEntity> _matcherAbilityId;
 
-    public static Entitas.IMatcher<GameEntity> AbilityID {
+    public static Entitas.IMatcher<GameEntity> AbilityId {
         get {
-            if (_matcherAbilityID == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.AbilityID);
+            if (_matcherAbilityId == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.AbilityId);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherAbilityID = matcher;
+                _matcherAbilityId = matcher;
             }
 
-            return _matcherAbilityID;
+            return _matcherAbilityId;
         }
     }
 }
@@ -33,27 +33,28 @@ public sealed partial class GameMatcher {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public Code.Gameplay.Features.Abilities.AbilityIDComponent abilityID { get { return (Code.Gameplay.Features.Abilities.AbilityIDComponent)GetComponent(GameComponentsLookup.AbilityID); } }
-    public bool hasAbilityID { get { return HasComponent(GameComponentsLookup.AbilityID); } }
+    public Code.Gameplay.Features.Abilities.AbilityIdComponent abilityId { get { return (Code.Gameplay.Features.Abilities.AbilityIdComponent)GetComponent(GameComponentsLookup.AbilityId); } }
+    public Code.Gameplay.Features.Abilities.AbilityId AbilityId { get { return abilityId.Value; } }
+    public bool hasAbilityId { get { return HasComponent(GameComponentsLookup.AbilityId); } }
 
-    public GameEntity AddAbilityID(Code.Gameplay.Features.Abilities.AbilityID newValue) {
-        var index = GameComponentsLookup.AbilityID;
-        var component = (Code.Gameplay.Features.Abilities.AbilityIDComponent)CreateComponent(index, typeof(Code.Gameplay.Features.Abilities.AbilityIDComponent));
-        component.value = newValue;
+    public GameEntity AddAbilityId(Code.Gameplay.Features.Abilities.AbilityId newValue) {
+        var index = GameComponentsLookup.AbilityId;
+        var component = (Code.Gameplay.Features.Abilities.AbilityIdComponent)CreateComponent(index, typeof(Code.Gameplay.Features.Abilities.AbilityIdComponent));
+        component.Value = newValue;
         AddComponent(index, component);
         return this;
     }
 
-    public GameEntity ReplaceAbilityID(Code.Gameplay.Features.Abilities.AbilityID newValue) {
-        var index = GameComponentsLookup.AbilityID;
-        var component = (Code.Gameplay.Features.Abilities.AbilityIDComponent)CreateComponent(index, typeof(Code.Gameplay.Features.Abilities.AbilityIDComponent));
-        component.value = newValue;
+    public GameEntity ReplaceAbilityId(Code.Gameplay.Features.Abilities.AbilityId newValue) {
+        var index = GameComponentsLookup.AbilityId;
+        var component = (Code.Gameplay.Features.Abilities.AbilityIdComponent)CreateComponent(index, typeof(Code.Gameplay.Features.Abilities.AbilityIdComponent));
+        component.Value = newValue;
         ReplaceComponent(index, component);
         return this;
     }
 
-    public GameEntity RemoveAbilityID() {
-        RemoveComponent(GameComponentsLookup.AbilityID);
+    public GameEntity RemoveAbilityId() {
+        RemoveComponent(GameComponentsLookup.AbilityId);
         return this;
     }
 }

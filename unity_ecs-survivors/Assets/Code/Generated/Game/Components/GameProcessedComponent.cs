@@ -33,7 +33,7 @@ public sealed partial class GameMatcher {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly Code.Gameplay.Features.Armaments.ProcessedComponent processedComponent = new Code.Gameplay.Features.Armaments.ProcessedComponent();
+    static readonly Code.Gameplay.Features.Armaments.Processed processedComponent = new Code.Gameplay.Features.Armaments.Processed();
 
     public bool isProcessed {
         get { return HasComponent(GameComponentsLookup.Processed); }

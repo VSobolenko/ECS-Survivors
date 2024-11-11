@@ -3,11 +3,11 @@ using Code.Infrastructure.Systems;
 
 namespace Code.Gameplay.Features.DamageApplication
 {
-public class DamageApplicationFeature : Feature
-{
-    public DamageApplicationFeature(ISystemFactory systemFactory)
+  public class DamageApplicationFeature : Feature
+  {
+    public DamageApplicationFeature(ISystemFactory systems)
     {
-        Add(systemFactory.Create<ApplyDamageOnTargets>());
+      Add(systems.Create<ApplyDamageOnTargetsSystem>());
     }
-}
+  }
 }

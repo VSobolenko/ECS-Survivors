@@ -33,21 +33,22 @@ public sealed partial class GameMatcher {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public Code.Gameplay.Features.TargetCollection.LayerMaskComponent layerMask { get { return (Code.Gameplay.Features.TargetCollection.LayerMaskComponent)GetComponent(GameComponentsLookup.LayerMask); } }
+    public Code.Gameplay.Features.TargetCollection.LayerMask layerMask { get { return (Code.Gameplay.Features.TargetCollection.LayerMask)GetComponent(GameComponentsLookup.LayerMask); } }
+    public int LayerMask { get { return layerMask.Value; } }
     public bool hasLayerMask { get { return HasComponent(GameComponentsLookup.LayerMask); } }
 
     public GameEntity AddLayerMask(int newValue) {
         var index = GameComponentsLookup.LayerMask;
-        var component = (Code.Gameplay.Features.TargetCollection.LayerMaskComponent)CreateComponent(index, typeof(Code.Gameplay.Features.TargetCollection.LayerMaskComponent));
-        component.value = newValue;
+        var component = (Code.Gameplay.Features.TargetCollection.LayerMask)CreateComponent(index, typeof(Code.Gameplay.Features.TargetCollection.LayerMask));
+        component.Value = newValue;
         AddComponent(index, component);
         return this;
     }
 
     public GameEntity ReplaceLayerMask(int newValue) {
         var index = GameComponentsLookup.LayerMask;
-        var component = (Code.Gameplay.Features.TargetCollection.LayerMaskComponent)CreateComponent(index, typeof(Code.Gameplay.Features.TargetCollection.LayerMaskComponent));
-        component.value = newValue;
+        var component = (Code.Gameplay.Features.TargetCollection.LayerMask)CreateComponent(index, typeof(Code.Gameplay.Features.TargetCollection.LayerMask));
+        component.Value = newValue;
         ReplaceComponent(index, component);
         return this;
     }

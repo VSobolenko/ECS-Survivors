@@ -34,20 +34,21 @@ public sealed partial class GameMatcher {
 public partial class GameEntity {
 
     public Code.Gameplay.Features.Enemies.EnemyAnimatorComponent enemyAnimator { get { return (Code.Gameplay.Features.Enemies.EnemyAnimatorComponent)GetComponent(GameComponentsLookup.EnemyAnimator); } }
+    public Code.Gameplay.Features.Enemies.Behaviours.EnemyAnimator EnemyAnimator { get { return enemyAnimator.Value; } }
     public bool hasEnemyAnimator { get { return HasComponent(GameComponentsLookup.EnemyAnimator); } }
 
-    public GameEntity AddEnemyAnimator(Code.Gameplay.Features.Enemies.Behaviours.EnemyAnimator newAnimator) {
+    public GameEntity AddEnemyAnimator(Code.Gameplay.Features.Enemies.Behaviours.EnemyAnimator newValue) {
         var index = GameComponentsLookup.EnemyAnimator;
         var component = (Code.Gameplay.Features.Enemies.EnemyAnimatorComponent)CreateComponent(index, typeof(Code.Gameplay.Features.Enemies.EnemyAnimatorComponent));
-        component.animator = newAnimator;
+        component.Value = newValue;
         AddComponent(index, component);
         return this;
     }
 
-    public GameEntity ReplaceEnemyAnimator(Code.Gameplay.Features.Enemies.Behaviours.EnemyAnimator newAnimator) {
+    public GameEntity ReplaceEnemyAnimator(Code.Gameplay.Features.Enemies.Behaviours.EnemyAnimator newValue) {
         var index = GameComponentsLookup.EnemyAnimator;
         var component = (Code.Gameplay.Features.Enemies.EnemyAnimatorComponent)CreateComponent(index, typeof(Code.Gameplay.Features.Enemies.EnemyAnimatorComponent));
-        component.animator = newAnimator;
+        component.Value = newValue;
         ReplaceComponent(index, component);
         return this;
     }

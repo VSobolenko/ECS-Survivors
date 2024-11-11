@@ -33,12 +33,12 @@ public sealed partial class GameMatcher {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public Code.Gameplay.Features.TargetCollection.RadiusComponent radius { get { return (Code.Gameplay.Features.TargetCollection.RadiusComponent)GetComponent(GameComponentsLookup.Radius); } }
+    public Code.Common.Radius radius { get { return (Code.Common.Radius)GetComponent(GameComponentsLookup.Radius); } }
     public bool hasRadius { get { return HasComponent(GameComponentsLookup.Radius); } }
 
     public GameEntity AddRadius(float newValue) {
         var index = GameComponentsLookup.Radius;
-        var component = (Code.Gameplay.Features.TargetCollection.RadiusComponent)CreateComponent(index, typeof(Code.Gameplay.Features.TargetCollection.RadiusComponent));
+        var component = (Code.Common.Radius)CreateComponent(index, typeof(Code.Common.Radius));
         component.value = newValue;
         AddComponent(index, component);
         return this;
@@ -46,7 +46,7 @@ public partial class GameEntity {
 
     public GameEntity ReplaceRadius(float newValue) {
         var index = GameComponentsLookup.Radius;
-        var component = (Code.Gameplay.Features.TargetCollection.RadiusComponent)CreateComponent(index, typeof(Code.Gameplay.Features.TargetCollection.RadiusComponent));
+        var component = (Code.Common.Radius)CreateComponent(index, typeof(Code.Common.Radius));
         component.value = newValue;
         ReplaceComponent(index, component);
         return this;

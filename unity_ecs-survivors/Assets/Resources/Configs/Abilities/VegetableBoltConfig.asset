@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6add9dbc9eb4dcda56cd56e519fa8b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 9833df43fb064a3199752651eaefcfde, type: 3}
   m_Name: VegetableBoltConfig
   m_EditorClassIdentifier: 
-  abilityID: 1
-  levels:
-  - cooldown: 1
-    viewPrefab: {fileID: 0}
-    projectileSetup:
-      speed: 0
-      pierce: 0
-      contactRadius: 0
-      lifeTime: 0
+  AbilityId: 1
+  Levels:
+  - Cooldown: 2
+    ViewPrefab: {fileID: 3884743984189474924, guid: 08ce9f5922001044d87f0b92a159a8c4, type: 3}
+    ProjectileSetup:
+      Speed: 3
+      Pierce: 3
+      ContactRadius: 0.1
+      Lifetime: 2

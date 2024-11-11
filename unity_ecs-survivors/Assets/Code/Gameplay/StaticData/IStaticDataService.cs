@@ -6,7 +6,7 @@ namespace Code.Gameplay.StaticData
   public interface IStaticDataService
   {
       void LoadAll();
-      AbilityConfig GetAbilityConfig(AbilityID abilityID);
-      AbilityLevel GetAbilityLevel(AbilityID abilityID, int level);
+      AbilityConfig GetAbilityConfig(AbilityId abilityID);
+      AbilityLevel GetAbilityLevel(AbilityId abilityID, int level);
   }
 }

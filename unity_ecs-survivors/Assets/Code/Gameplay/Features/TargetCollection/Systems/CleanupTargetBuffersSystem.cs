@@ -1,22 +1,22 @@
-﻿using Entitas;
+using Entitas;
 
 namespace Code.Gameplay.Features.TargetCollection.Systems
 {
-public class CleanupTargetBuffersSystem : ICleanupSystem
-{
+  public class CleanupTargetBuffersSystem : ICleanupSystem
+  {
     private readonly IGroup<GameEntity> _entities;
 
-    public CleanupTargetBuffersSystem(GameContext gameContext)
+    public CleanupTargetBuffersSystem(GameContext game)
     {
-        _entities = gameContext.GetGroup(GameMatcher.TargetsBuffer);
+      _entities = game.GetGroup(GameMatcher.TargetBuffer);
     }
     
     public void Cleanup()
     {
-        foreach (var entity in _entities)
-        {
-            entity.targetsBuffer.value.Clear();
-        }    
+      foreach (GameEntity entity in _entities)
+      {
+        entity.TargetBuffer.Clear();
+      }  
     }
-}
+  }
 }

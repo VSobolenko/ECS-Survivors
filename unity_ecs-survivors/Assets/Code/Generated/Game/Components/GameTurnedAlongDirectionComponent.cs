@@ -8,17 +8,17 @@
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherTurnAlongDirection;
+    static Entitas.IMatcher<GameEntity> _matcherTurnedAlongDirection;
 
-    public static Entitas.IMatcher<GameEntity> TurnAlongDirection {
+    public static Entitas.IMatcher<GameEntity> TurnedAlongDirection {
         get {
-            if (_matcherTurnAlongDirection == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.TurnAlongDirection);
+            if (_matcherTurnedAlongDirection == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.TurnedAlongDirection);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherTurnAlongDirection = matcher;
+                _matcherTurnedAlongDirection = matcher;
             }
 
-            return _matcherTurnAlongDirection;
+            return _matcherTurnedAlongDirection;
         }
     }
 }
@@ -33,18 +33,18 @@ public sealed partial class GameMatcher {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly Code.Gameplay.Features.Movement.MovementComponents.TurnAlongDirection turnAlongDirectionComponent = new Code.Gameplay.Features.Movement.MovementComponents.TurnAlongDirection();
+    static readonly Code.Gameplay.Features.Movement.TurnedAlongDirection turnedAlongDirectionComponent = new Code.Gameplay.Features.Movement.TurnedAlongDirection();
 
-    public bool isTurnAlongDirection {
-        get { return HasComponent(GameComponentsLookup.TurnAlongDirection); }
+    public bool isTurnedAlongDirection {
+        get { return HasComponent(GameComponentsLookup.TurnedAlongDirection); }
         set {
-            if (value != isTurnAlongDirection) {
-                var index = GameComponentsLookup.TurnAlongDirection;
+            if (value != isTurnedAlongDirection) {
+                var index = GameComponentsLookup.TurnedAlongDirection;
                 if (value) {
                     var componentPool = GetComponentPool(index);
                     var component = componentPool.Count > 0
                             ? componentPool.Pop()
-                            : turnAlongDirectionComponent;
+                            : turnedAlongDirectionComponent;
 
                     AddComponent(index, component);
                 } else {

@@ -1,25 +1,26 @@
-﻿using Code.Gameplay.Features.Hero.Behaviours;
+using Code.Gameplay.Features.Hero.Behaviours;
 using Code.Infrastructure.View.Registrars;
 
 namespace Code.Gameplay.Features.Hero.Registrars
 {
-public class HeroAnimatorRegistrar : EntityComponentRegistrar
-{
-    public HeroAnimator heroAnimator;
+  public class HeroAnimatorRegistrar : EntityComponentRegistrar
+  {
+    public HeroAnimator HeroAnimator;
 
     public override void RegisterComponents()
     {
-        Entity.AddHeroAnimator(heroAnimator)
-              .AddDamageTakenAnimator(heroAnimator);
+      Entity
+        .AddHeroAnimator(HeroAnimator)
+        .AddDamageTakenAnimator(HeroAnimator);
     }
 
     public override void UnRegisterComponents()
     {
-        if (Entity.hasHeroAnimator)
-            Entity.RemoveHeroAnimator();
-        
-        if (Entity.hasDamageTakenAnimator)
-            Entity.RemoveDamageTakenAnimator();
+      if (Entity.hasHeroAnimator)
+        Entity.RemoveHeroAnimator();
+
+      if (Entity.hasDamageTakenAnimator)
+        Entity.RemoveDamageTakenAnimator();
     }
-}
+  }
 }
