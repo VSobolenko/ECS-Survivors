@@ -49,6 +49,7 @@ namespace Code.Gameplay.Features.Abilities.System
         
         _armamentFactory
           .CreateVegetableBolt(1, hero.worldPosition.value)
+          .AddProducerId(hero.id.id)
           .ReplaceDirection((FirstAvailableTarget().worldPosition.value - hero.worldPosition.value).normalized)
           .With(x => x.isMoving = true);
         

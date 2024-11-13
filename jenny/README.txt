@@ -27,18 +27,21 @@
 	Availability: Unity projects
 	Use in: Generation
 	Code: 
-public class $name$ : IExecuteSystem
+public class $name$System : IExecuteSystem
 {
     private readonly IGroup<GameEntity> $_entities$;
 
-    public $name$(GameContext game)
+    public $name$System(GameContext game)
     {
-        $_entities$ = game.GetGroup(GameMatcher.AllOf(GameMatcher.AllOf($matcher$)));
+        $_entities$ = game.GetGroup(GameMatcher.AllOf(new[]
+        {
+            $matcher$,
+        }));
     }
 
     public void Execute()
     {
-        foreach (GameEntity $entity$ in $_entities$)
+        foreach (var $entity$ in $_entities$)
         {
             $END$
         }
@@ -79,14 +82,17 @@ public class $name$ : ReactiveSystem<$context$Entity>
 	Availability: Unity projects
 	Use in: Generation
 	Code: 
-public class $name$ : ICleanupSystem
+public class $name$Cleanup : ICleanupSystem
 {
 	private readonly IGroup<$context$Entity> _$_entities$;
 	private readonly List<$context$Entity> _buffer = new ($bufferCount$);
 
-	public $name$($context$Context $contextParameter$)
+	public $name$Cleanup($context$Context $contextParameter$)
 	{
-		_$_entities$ = $contextParameter$.GetGroup($context$Matcher.AllOf($matcher$$END$));
+		_$_entities$ = $contextParameter$.GetGroup($context$Matcher.AllOf(new[]
+		{
+			$matcher$,
+		}));
 	}
 
 	public void Cleanup()

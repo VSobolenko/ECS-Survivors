@@ -31,7 +31,7 @@ namespace Code.Gameplay.Features.TargetCollection.Systems
     {
       foreach (GameEntity entity in _ready.GetEntities(_buffer))
       {
-        for (int i = 0; i < Math.Min(TargetCountInRadius(entity), entity.TargetLimit); i++)
+        for (int i = 0; i < Math.Min(TargetCountInRadius(entity), entity.targetLimit.value); i++)
         {
           int targetId = _targetCastBuffer[i].id.id;
 
