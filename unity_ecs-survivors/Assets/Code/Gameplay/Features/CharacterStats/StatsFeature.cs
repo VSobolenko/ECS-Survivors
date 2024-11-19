@@ -8,6 +8,7 @@ public sealed class StatsFeature : Feature
     public StatsFeature(ISystemFactory systems)
     {
         Add(systems.Create<StatsChangeSystem>());
+        Add(systems.Create<ApplySpeedFromStatsSystem>());
     }
 }
 }

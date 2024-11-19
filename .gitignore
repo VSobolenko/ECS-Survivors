@@ -9,8 +9,8 @@
 /unity_ecs-survivors/[Bb]uilds/
 /unity_ecs-survivors/[Ll]ogs/
 /unity_ecs-survivors/[Uu]ser[Ss]ettings/
-/[Oo]bj
-/[Bb]in
+/[Oo]bj/
+/[Bb]in/
 /unity_ecs-survivors/UnityGenerated/
 
 #Temp for local usage

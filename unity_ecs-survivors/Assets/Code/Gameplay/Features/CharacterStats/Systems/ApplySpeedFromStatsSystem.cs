@@ -1,4 +1,5 @@
-﻿using Entitas;
+﻿using Code.Common.Extensions;
+using Entitas;
 
 namespace Code.Gameplay.Features.CharacterStats.Systems
 {
@@ -18,10 +19,19 @@ public class ApplySpeedFromStatsSystem : IExecuteSystem
 
     public void Execute()
     {
-        foreach (GameEntity entity in _statOwners)
+        foreach (GameEntity statOwner in _statOwners)
         {
-            
+            statOwner.ReplaceSpeed(MoveSpeed(statOwner).ZeroIfNegative());
         }
     }
+
+    private static float MoveSpeed(GameEntity statOwner) =>
+        statOwner.baseStats.value[Stats.Speed] + statOwner.baseStats.value[Stats.Speed];
+}
+
+public struct StatKey
+{
+    public readonly int targetId;
+    public readonly Stats stats;
 }
 }
