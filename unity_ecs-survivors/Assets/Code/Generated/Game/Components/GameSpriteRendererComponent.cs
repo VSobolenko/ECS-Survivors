@@ -34,20 +34,21 @@ public sealed partial class GameMatcher {
 public partial class GameEntity {
 
     public Code.Gameplay.Common.SpriteRendererComponent spriteRenderer { get { return (Code.Gameplay.Common.SpriteRendererComponent)GetComponent(GameComponentsLookup.SpriteRenderer); } }
+    public UnityEngine.SpriteRenderer SpriteRenderer { get { return spriteRenderer.Value; } }
     public bool hasSpriteRenderer { get { return HasComponent(GameComponentsLookup.SpriteRenderer); } }
 
-    public GameEntity AddSpriteRenderer(UnityEngine.SpriteRenderer newSpriteRenderer) {
+    public GameEntity AddSpriteRenderer(UnityEngine.SpriteRenderer newValue) {
         var index = GameComponentsLookup.SpriteRenderer;
         var component = (Code.Gameplay.Common.SpriteRendererComponent)CreateComponent(index, typeof(Code.Gameplay.Common.SpriteRendererComponent));
-        component.spriteRenderer = newSpriteRenderer;
+        component.Value = newValue;
         AddComponent(index, component);
         return this;
     }
 
-    public GameEntity ReplaceSpriteRenderer(UnityEngine.SpriteRenderer newSpriteRenderer) {
+    public GameEntity ReplaceSpriteRenderer(UnityEngine.SpriteRenderer newValue) {
         var index = GameComponentsLookup.SpriteRenderer;
         var component = (Code.Gameplay.Common.SpriteRendererComponent)CreateComponent(index, typeof(Code.Gameplay.Common.SpriteRendererComponent));
-        component.spriteRenderer = newSpriteRenderer;
+        component.Value = newValue;
         ReplaceComponent(index, component);
         return this;
     }

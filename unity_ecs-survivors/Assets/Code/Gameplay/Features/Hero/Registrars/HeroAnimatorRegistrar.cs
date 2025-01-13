@@ -14,7 +14,7 @@ namespace Code.Gameplay.Features.Hero.Registrars
         .AddDamageTakenAnimator(HeroAnimator);
     }
 
-    public override void UnRegisterComponents()
+    public override void UnregisterComponents()
     {
       if (Entity.hasHeroAnimator)
         Entity.RemoveHeroAnimator();

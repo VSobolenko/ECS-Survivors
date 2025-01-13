@@ -1,28 +1,29 @@
-﻿using Entitas;
+using Code.Gameplay.Input.Service;
+using Entitas;
 using UnityEngine;
 
-namespace Code.Gameplay.Input.Service.Systems
+namespace Code.Gameplay.Input.Systems
 {
-public class EmitInputSystem : IExecuteSystem
-{
+  public class EmitInputSystem : IExecuteSystem
+  {
     private readonly IInputService _inputService;
-    private readonly IGroup<GameEntity> _input;
+    private readonly IGroup<GameEntity> _inputs;
 
-    public EmitInputSystem(GameContext gameContext, IInputService inputService)
+    public EmitInputSystem(GameContext game, IInputService inputService)
     {
-        _inputService = inputService;
-        _input = gameContext.GetGroup(GameMatcher.Input);
-    }    
+      _inputService = inputService;
+      _inputs = game.GetGroup(GameMatcher.Input);
+    }
     
     public void Execute()
     {
-        foreach (var input in _input)
-        {
-            if (_inputService.HasAxisInput())
-                input.ReplaceAxisInput(new Vector2(_inputService.GetHorizontalAxis(), _inputService.GetVerticalAxis()));
-            else if (input.hasAxisInput)
-                input.RemoveAxisInput();
-        }
+      foreach (GameEntity input in _inputs)
+      {
+        if (_inputService.HasAxisInput())
+          input.ReplaceAxisInput(new Vector2(_inputService.GetHorizontalAxis(), _inputService.GetVerticalAxis()));
+        else if (input.hasAxisInput)
+          input.RemoveAxisInput();
+      }
     }
-}
+  }
 }

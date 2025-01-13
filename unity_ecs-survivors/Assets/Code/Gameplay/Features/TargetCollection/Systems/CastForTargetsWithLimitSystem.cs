@@ -31,9 +31,9 @@ namespace Code.Gameplay.Features.TargetCollection.Systems
     {
       foreach (GameEntity entity in _ready.GetEntities(_buffer))
       {
-        for (int i = 0; i < Math.Min(TargetCountInRadius(entity), entity.targetLimit.value); i++)
+        for (int i = 0; i < Math.Min(TargetCountInRadius(entity), entity.TargetLimit); i++)
         {
-          int targetId = _targetCastBuffer[i].id.id;
+          int targetId = _targetCastBuffer[i].Id;
 
           if (!AlreadyProcessed(entity, targetId))
           {
@@ -54,7 +54,7 @@ namespace Code.Gameplay.Features.TargetCollection.Systems
 
     private int TargetCountInRadius(GameEntity entity)
     {
-      return _physicsService.CircleCastNonAlloc(entity.worldPosition.value, radius: entity.radius.value, entity.LayerMask, _targetCastBuffer);
+      return _physicsService.CircleCastNonAlloc(entity.WorldPosition, radius: entity.Radius, entity.LayerMask, _targetCastBuffer);
     }
 
     public void TearDown()

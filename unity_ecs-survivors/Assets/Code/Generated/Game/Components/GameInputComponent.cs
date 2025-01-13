@@ -33,7 +33,7 @@ public sealed partial class GameMatcher {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly Code.Gameplay.Input.Service.InputComponents.Input inputComponent = new Code.Gameplay.Input.Service.InputComponents.Input();
+    static readonly Code.Gameplay.Input.Input inputComponent = new Code.Gameplay.Input.Input();
 
     public bool isInput {
         get { return HasComponent(GameComponentsLookup.Input); }

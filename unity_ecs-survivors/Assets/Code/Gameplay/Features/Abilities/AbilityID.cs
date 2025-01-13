@@ -1,4 +1,4 @@
-namespace Code.Gameplay.Features.Abilities
+﻿namespace Code.Gameplay.Features.Abilities
 {
   public enum AbilityId
   {

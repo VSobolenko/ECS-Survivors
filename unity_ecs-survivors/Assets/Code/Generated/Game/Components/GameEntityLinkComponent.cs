@@ -34,12 +34,13 @@ public sealed partial class GameMatcher {
 public partial class GameEntity {
 
     public Code.Gameplay.Common.EntityLink entityLink { get { return (Code.Gameplay.Common.EntityLink)GetComponent(GameComponentsLookup.EntityLink); } }
+    public int EntityLink { get { return entityLink.Value; } }
     public bool hasEntityLink { get { return HasComponent(GameComponentsLookup.EntityLink); } }
 
     public GameEntity AddEntityLink(int newValue) {
         var index = GameComponentsLookup.EntityLink;
         var component = (Code.Gameplay.Common.EntityLink)CreateComponent(index, typeof(Code.Gameplay.Common.EntityLink));
-        component.value = newValue;
+        component.Value = newValue;
         AddComponent(index, component);
         return this;
     }
@@ -47,7 +48,7 @@ public partial class GameEntity {
     public GameEntity ReplaceEntityLink(int newValue) {
         var index = GameComponentsLookup.EntityLink;
         var component = (Code.Gameplay.Common.EntityLink)CreateComponent(index, typeof(Code.Gameplay.Common.EntityLink));
-        component.value = newValue;
+        component.Value = newValue;
         ReplaceComponent(index, component);
         return this;
     }

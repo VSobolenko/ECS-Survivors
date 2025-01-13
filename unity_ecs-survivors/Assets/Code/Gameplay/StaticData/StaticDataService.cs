@@ -7,36 +7,38 @@ using UnityEngine;
 
 namespace Code.Gameplay.StaticData
 {
-public class StaticDataService : IStaticDataService
-{
+  public class StaticDataService : IStaticDataService
+  {
     private Dictionary<AbilityId,AbilityConfig> _abilityById;
 
     public void LoadAll()
     {
-        LoadAbilities();
+      LoadAbilities();
     }
 
-    public AbilityConfig GetAbilityConfig(AbilityId abilityID)
+    public AbilityConfig GetAbilityConfig(AbilityId abilityId)
     {
-        if (_abilityById.TryGetValue(abilityID, out var config))
-            return config;
+      if (_abilityById.TryGetValue(abilityId, out AbilityConfig config))
+        return config;
 
-        throw new Exception($"Ability config for {abilityID} was not found");
+      throw new Exception($"Ability config for {abilityId} was not found");
     }
 
-    public AbilityLevel GetAbilityLevel(AbilityId abilityID, int level)
+    public AbilityLevel GetAbilityLevel(AbilityId abilityId, int level)
     {
-        var config = GetAbilityConfig(abilityID);
-        if (level > config.Levels.Count)
-            level = config.Levels.Count;
+      AbilityConfig config = GetAbilityConfig(abilityId);
 
-        return config.Levels[level - 1];
+      if (level > config.Levels.Count)
+        level = config.Levels.Count;
+
+      return config.Levels[level - 1];
     }
-    
+
     private void LoadAbilities()
     {
-        _abilityById = Resources.LoadAll<AbilityConfig>("Configs/Abilities")
-                                .ToDictionary(x => x.AbilityId, x => x);
+      _abilityById = Resources
+        .LoadAll<AbilityConfig>("Configs/Abilities")
+        .ToDictionary(x => x.AbilityId, x => x);
     }
-}
+  }
 }

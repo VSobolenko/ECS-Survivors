@@ -25,7 +25,7 @@ namespace Code.Gameplay.Features.Enemies.Systems
       foreach (GameEntity hero in _heroes)
       foreach (GameEntity enemy in _enemies)
       {
-        enemy.ReplaceDirection((hero.worldPosition.value - enemy.worldPosition.value).normalized);
+        enemy.ReplaceDirection((hero.WorldPosition - enemy.WorldPosition).normalized);
         enemy.isMoving = true;
       }
     }

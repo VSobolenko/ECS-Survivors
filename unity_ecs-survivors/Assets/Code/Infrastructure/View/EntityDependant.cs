@@ -1,18 +1,17 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Code.Infrastructure.View
 {
-public abstract class EntityDependant : MonoBehaviour
-{
-    public EntityBehaviour entityView;
+  public abstract class EntityDependant : MonoBehaviour
+  {
+    public EntityBehaviour EntityView;
 
-    public GameEntity Entity => entityView != null ? entityView.Entity : null;
+    public GameEntity Entity => EntityView != null ? EntityView.Entity : null;
 
     private void Awake()
     {
-        if (!entityView)
-            entityView = GetComponent<EntityBehaviour>();
+      if (!EntityView)
+        EntityView = GetComponent<EntityBehaviour>();
     }
-}
+  }
 }

@@ -21,8 +21,8 @@ namespace Code.Gameplay.Features.Movement.Systems
     {
       foreach (GameEntity mover in _movers)
       {
-        float scale = Mathf.Abs(mover.spriteRenderer.spriteRenderer.transform.localScale.x);
-        mover.spriteRenderer.spriteRenderer.transform.SetScaleX(scale * FaceDirection(mover));
+        float scale = Mathf.Abs(mover.SpriteRenderer.transform.localScale.x);
+        mover.SpriteRenderer.transform.SetScaleX(scale * FaceDirection(mover));
       }
     }
 

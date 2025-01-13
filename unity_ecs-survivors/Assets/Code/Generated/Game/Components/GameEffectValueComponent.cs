@@ -34,12 +34,13 @@ public sealed partial class GameMatcher {
 public partial class GameEntity {
 
     public Code.Gameplay.Features.Effects.EffectValue effectValue { get { return (Code.Gameplay.Features.Effects.EffectValue)GetComponent(GameComponentsLookup.EffectValue); } }
+    public float EffectValue { get { return effectValue.Value; } }
     public bool hasEffectValue { get { return HasComponent(GameComponentsLookup.EffectValue); } }
 
     public GameEntity AddEffectValue(float newValue) {
         var index = GameComponentsLookup.EffectValue;
         var component = (Code.Gameplay.Features.Effects.EffectValue)CreateComponent(index, typeof(Code.Gameplay.Features.Effects.EffectValue));
-        component.value = newValue;
+        component.Value = newValue;
         AddComponent(index, component);
         return this;
     }
@@ -47,7 +48,7 @@ public partial class GameEntity {
     public GameEntity ReplaceEffectValue(float newValue) {
         var index = GameComponentsLookup.EffectValue;
         var component = (Code.Gameplay.Features.Effects.EffectValue)CreateComponent(index, typeof(Code.Gameplay.Features.Effects.EffectValue));
-        component.value = newValue;
+        component.Value = newValue;
         ReplaceComponent(index, component);
         return this;
     }

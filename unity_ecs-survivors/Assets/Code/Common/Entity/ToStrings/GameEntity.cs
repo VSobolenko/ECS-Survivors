@@ -3,7 +3,6 @@ using System.Linq;
 using System.Text;
 using Code.Common.Entity.ToStrings;
 using Code.Common.Extensions;
-using Code.Gameplay.Common;
 using Code.Gameplay.Features.Enemies;
 using Code.Gameplay.Features.Hero;
 using Entitas;
@@ -54,13 +53,13 @@ public sealed partial class GameEntity : INamedEntity
   private string PrintHero()
   {
     return new StringBuilder($"Hero ")
-      .With(s => s.Append($"Id:{id.id}"), when: hasId)
+      .With(s => s.Append($"Id:{Id}"), when: hasId)
       .ToString();
   }
   
   private string PrintEnemy() =>
     new StringBuilder($"Enemy ")
-      .With(s => s.Append($"Id:{id.id}"), when: hasId)
+      .With(s => s.Append($"Id:{Id}"), when: hasId)
       .ToString();
   
   public string BaseToString() => base.ToString();

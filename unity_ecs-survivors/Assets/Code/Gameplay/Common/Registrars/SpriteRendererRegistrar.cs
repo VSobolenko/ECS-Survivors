@@ -3,16 +3,19 @@ using UnityEngine;
 
 namespace Code.Gameplay.Common.Registrars
 {
-public class SpriteRendererRegistrar : EntityComponentRegistrar
-{
-    public SpriteRenderer spriteRenderer;
+  public class SpriteRendererRegistrar : EntityComponentRegistrar
+  {
+    public SpriteRenderer SpriteRenderer;
 
-    public override void RegisterComponents() => Entity.AddSpriteRenderer(spriteRenderer);
-
-    public override void UnRegisterComponents()
+    public override void RegisterComponents()
     {
-        if (Entity.hasSpriteRenderer)
-            Entity.RemoveSpriteRenderer();
+      Entity.AddSpriteRenderer(SpriteRenderer);
     }
-}
+
+    public override void UnregisterComponents()
+    {
+      if (Entity.hasSpriteRenderer)
+        Entity.RemoveSpriteRenderer();
+    }
+  }
 }

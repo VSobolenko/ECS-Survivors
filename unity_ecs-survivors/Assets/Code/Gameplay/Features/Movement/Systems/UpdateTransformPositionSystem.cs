@@ -18,7 +18,7 @@ namespace Code.Gameplay.Features.Movement.Systems
     {
       foreach (GameEntity mover in _movers)
       {
-        mover.transform.transform.position = mover.worldPosition.value;
+        mover.Transform.position = mover.WorldPosition;
       }
     }
   }

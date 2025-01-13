@@ -38,8 +38,8 @@ namespace Code.Gameplay.Features.TargetCollection.Systems
     
     private IEnumerable<int> TargetsInRadius(GameEntity entity)
     {
-      return _physicsService.CircleCast(entity.worldPosition.value, radius: entity.radius.value, entity.LayerMask)
-        .Select(x => x.id.id);
+      return _physicsService.CircleCast(entity.WorldPosition, radius: entity.Radius, entity.LayerMask)
+        .Select(x => x.Id);
     }
   }
 }

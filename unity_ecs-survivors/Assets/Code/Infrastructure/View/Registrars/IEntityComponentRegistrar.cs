@@ -1,8 +1,8 @@
-﻿namespace Code.Infrastructure.View.Registrars
+namespace Code.Infrastructure.View.Registrars
 {
-public interface IEntityComponentRegistrar
-{
+  public interface IEntityComponentRegistrar
+  {
     void RegisterComponents();
-    void UnRegisterComponents();
-}
+    void UnregisterComponents();
+  }
 }

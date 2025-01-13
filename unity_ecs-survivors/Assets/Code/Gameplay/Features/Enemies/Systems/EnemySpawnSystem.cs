@@ -40,7 +40,7 @@ namespace Code.Gameplay.Features.Enemies.Systems
         if (timer.SpawnTimer <= 0)
         {
           timer.ReplaceSpawnTimer(GameplayConstants.EnemySpawnTimer);
-          _enemyFactory.CreateEnemy(EnemyTypeId.Goblin, at: RandomSpawnPosition(hero.worldPosition.value));
+          _enemyFactory.CreateEnemy(EnemyTypeId.Goblin, at: RandomSpawnPosition(hero.WorldPosition));
         }
       }
     }

@@ -19,7 +19,7 @@ namespace Code.Gameplay.Features.Armaments
     {
       foreach (GameEntity armament in _armaments)
       {
-        if (armament.ProcessedTargets.Count >= armament.targetLimit.value)
+        if (armament.ProcessedTargets.Count >= armament.TargetLimit)
           armament.isProcessed = true;
       }
     }

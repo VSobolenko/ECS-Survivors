@@ -34,20 +34,21 @@ public sealed partial class GameMatcher {
 public partial class GameEntity {
 
     public Code.Gameplay.Common.TransformComponent transform { get { return (Code.Gameplay.Common.TransformComponent)GetComponent(GameComponentsLookup.Transform); } }
+    public UnityEngine.Transform Transform { get { return transform.Value; } }
     public bool hasTransform { get { return HasComponent(GameComponentsLookup.Transform); } }
 
-    public GameEntity AddTransform(UnityEngine.Transform newTransform) {
+    public GameEntity AddTransform(UnityEngine.Transform newValue) {
         var index = GameComponentsLookup.Transform;
         var component = (Code.Gameplay.Common.TransformComponent)CreateComponent(index, typeof(Code.Gameplay.Common.TransformComponent));
-        component.transform = newTransform;
+        component.Value = newValue;
         AddComponent(index, component);
         return this;
     }
 
-    public GameEntity ReplaceTransform(UnityEngine.Transform newTransform) {
+    public GameEntity ReplaceTransform(UnityEngine.Transform newValue) {
         var index = GameComponentsLookup.Transform;
         var component = (Code.Gameplay.Common.TransformComponent)CreateComponent(index, typeof(Code.Gameplay.Common.TransformComponent));
-        component.transform = newTransform;
+        component.Value = newValue;
         ReplaceComponent(index, component);
         return this;
     }

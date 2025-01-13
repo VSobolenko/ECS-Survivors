@@ -1,38 +1,46 @@
-﻿using Code.Infrastructure.AssetManagement;
+using Code.Infrastructure.AssetManagement;
 using UnityEngine;
 using Zenject;
 
 namespace Code.Infrastructure.View.Factory
 {
-public class EntityViewFactory : IEntityViewFactory
-{
+  public class EntityViewFactory : IEntityViewFactory
+  {
     private readonly IAssetProvider _assetProvider;
     private readonly IInstantiator _instantiator;
-    private readonly Vector3 _farAway = new Vector3(-999, 999, 0);
+    private readonly Vector3 _farAway = new(-999, 999, 0);
 
     public EntityViewFactory(IAssetProvider assetProvider, IInstantiator instantiator)
     {
-        _assetProvider = assetProvider;
-        _instantiator = instantiator;
+      _assetProvider = assetProvider;
+      _instantiator = instantiator;
     }
     
     public EntityBehaviour CreateViewForEntity(GameEntity entity)
     {
-        var prefab = _assetProvider.LoadAsset<EntityBehaviour>(entity.viewPath.value);
-        var view = _instantiator.InstantiatePrefabForComponent<EntityBehaviour>(
-            prefab, _farAway, Quaternion.identity, null);
-        view.SetEntity(entity);
+      EntityBehaviour viewPrefab = _assetProvider.LoadAsset<EntityBehaviour>(entity.ViewPath);
+      EntityBehaviour view = _instantiator.InstantiatePrefabForComponent<EntityBehaviour>(
+        viewPrefab,
+        position: _farAway,
+        Quaternion.identity,
+        parentTransform: null);
+      
+      view.SetEntity(entity);
 
-        return view;
+      return view;
     }
-    
+
     public EntityBehaviour CreateViewForEntityFromPrefab(GameEntity entity)
     {
-        var view = _instantiator.InstantiatePrefabForComponent<EntityBehaviour>(
-            entity.viewPrefab.value, _farAway, Quaternion.identity, null);
-        view.SetEntity(entity);
+      EntityBehaviour view = _instantiator.InstantiatePrefabForComponent<EntityBehaviour>(
+        entity.ViewPrefab,
+        position: _farAway,
+        Quaternion.identity,
+        parentTransform: null);
+      
+      view.SetEntity(entity);
 
-        return view;
+      return view;
     }
-}
+  }
 }

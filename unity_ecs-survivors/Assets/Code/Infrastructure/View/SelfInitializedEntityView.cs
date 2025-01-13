@@ -1,26 +1,27 @@
-﻿using System;
-using Code.Common.Entity;
+﻿using Code.Common.Entity;
 using Code.Infrastructure.Identifiers;
 using UnityEngine;
 using Zenject;
 
 namespace Code.Infrastructure.View
 {
-public class SelfInitializedEntityView : MonoBehaviour
-{
-    public EntityBehaviour entityBehaviour;
-    private IIdentifierService _eIdentifierService;
+  public class SelfInitializedEntityView : MonoBehaviour
+  {
+    public EntityBehaviour EntityBehaviour;
+    
+    private IIdentifierService _identifiers;
 
     [Inject]
-    public void Construct(IIdentifierService eIdentifierService)
-    {
-        _eIdentifierService = eIdentifierService;
-    }
-    
+    private void Construct(IIdentifierService identifiers) => 
+      _identifiers = identifiers;
+
     private void Awake()
     {
-        var entity = CreateEntity.Empty().AddId(_eIdentifierService.Next());
-        entityBehaviour.SetEntity(entity);
+      GameEntity entity = CreateEntity.Empty()
+        .AddId(_identifiers.Next());
+      
+      EntityBehaviour.SetEntity(entity);
     }
-}
+
+  }
 }

@@ -1,14 +1,14 @@
-﻿using System;
-using Code.Common.Entity;
+﻿using Code.Common.Entity;
 using Entitas;
 
-namespace Code.Gameplay.Input.Service.Systems
+namespace Code.Gameplay.Input.Systems
 {
-public class InitializeInputSystem : IInitializeSystem
-{
+  public class InitializeInputSystem : IInitializeSystem
+  {
     public void Initialize()
     {
-        CreateEntity.Empty().isInput = true;
+      CreateEntity.Empty()
+        .isInput = true;
     }
-}
+  }
 }

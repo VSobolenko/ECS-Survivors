@@ -31,21 +31,22 @@ namespace Code.Gameplay.Features.Enemies.Factory
 
     private GameEntity CreateGoblin(Vector2 at)
     {
-        var baseStats = InitStats.EmptyStatsDictionary()
-                                 .With(x => x[Stats.Speed] = 2)
-                                 .With(x => x[Stats.MaxHp] = 100)
-            ;
+      Dictionary<Stats, float> baseStats = InitStats.EmptyStatDictionary()
+          .With(x => x[Stats.Speed] = 1)
+          .With(x => x[Stats.MaxHp] = 3)
+          .With(x => x[Stats.Damage] = 1);
+      
       return CreateEntity.Empty()
           .AddId(_identifiers.Next())
           .AddEnemyTypeId(EnemyTypeId.Goblin)
           .AddWorldPosition(at)
           .AddDirection(Vector2.zero)
           .AddBaseStats(baseStats)
-          .AddStatModifiers(InitStats.EmptyStatsDictionary())
+          .AddStatModifiers(InitStats.EmptyStatDictionary())
           .AddSpeed(baseStats[Stats.Speed])
           .AddCurrentHp(baseStats[Stats.MaxHp])
           .AddMaxHp(baseStats[Stats.MaxHp])
-          .AddEffectSetups(new List<EffectSetup> {new(){effectTypeId = EffectTypeId.Damage, value = baseStats[Stats.Damage]}})
+          .AddEffectSetups(new List<EffectSetup>{new EffectSetup(){EffectTypeId = EffectTypeId.Damage, Value = baseStats[Stats.Damage]}})
           .AddRadius(0.3f)
           .AddTargetBuffer(new List<int>(1))
           .AddCollectTargetsInterval(0.5f)

@@ -34,20 +34,21 @@ public sealed partial class GameMatcher {
 public partial class GameEntity {
 
     public Code.Common.SelfDestructTimer selfDestructTimer { get { return (Code.Common.SelfDestructTimer)GetComponent(GameComponentsLookup.SelfDestructTimer); } }
+    public float SelfDestructTimer { get { return selfDestructTimer.Value; } }
     public bool hasSelfDestructTimer { get { return HasComponent(GameComponentsLookup.SelfDestructTimer); } }
 
-    public GameEntity AddSelfDestructTimer(float newTime) {
+    public GameEntity AddSelfDestructTimer(float newValue) {
         var index = GameComponentsLookup.SelfDestructTimer;
         var component = (Code.Common.SelfDestructTimer)CreateComponent(index, typeof(Code.Common.SelfDestructTimer));
-        component.time = newTime;
+        component.Value = newValue;
         AddComponent(index, component);
         return this;
     }
 
-    public GameEntity ReplaceSelfDestructTimer(float newTime) {
+    public GameEntity ReplaceSelfDestructTimer(float newValue) {
         var index = GameComponentsLookup.SelfDestructTimer;
         var component = (Code.Common.SelfDestructTimer)CreateComponent(index, typeof(Code.Common.SelfDestructTimer));
-        component.time = newTime;
+        component.Value = newValue;
         ReplaceComponent(index, component);
         return this;
     }

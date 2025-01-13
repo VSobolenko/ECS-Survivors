@@ -34,12 +34,13 @@ public sealed partial class GameMatcher {
 public partial class GameEntity {
 
     public Code.Gameplay.Features.CharacterStats.StatModifiers statModifiers { get { return (Code.Gameplay.Features.CharacterStats.StatModifiers)GetComponent(GameComponentsLookup.StatModifiers); } }
+    public System.Collections.Generic.Dictionary<Code.Gameplay.Features.CharacterStats.Stats, float> StatModifiers { get { return statModifiers.Value; } }
     public bool hasStatModifiers { get { return HasComponent(GameComponentsLookup.StatModifiers); } }
 
     public GameEntity AddStatModifiers(System.Collections.Generic.Dictionary<Code.Gameplay.Features.CharacterStats.Stats, float> newValue) {
         var index = GameComponentsLookup.StatModifiers;
         var component = (Code.Gameplay.Features.CharacterStats.StatModifiers)CreateComponent(index, typeof(Code.Gameplay.Features.CharacterStats.StatModifiers));
-        component.value = newValue;
+        component.Value = newValue;
         AddComponent(index, component);
         return this;
     }
@@ -47,7 +48,7 @@ public partial class GameEntity {
     public GameEntity ReplaceStatModifiers(System.Collections.Generic.Dictionary<Code.Gameplay.Features.CharacterStats.Stats, float> newValue) {
         var index = GameComponentsLookup.StatModifiers;
         var component = (Code.Gameplay.Features.CharacterStats.StatModifiers)CreateComponent(index, typeof(Code.Gameplay.Features.CharacterStats.StatModifiers));
-        component.value = newValue;
+        component.Value = newValue;
         ReplaceComponent(index, component);
         return this;
     }

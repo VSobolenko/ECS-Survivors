@@ -22,15 +22,11 @@ public partial class Contexts : Entitas.IContexts {
     static Contexts _sharedInstance;
 
     public GameContext game { get; set; }
-    public InputContext input { get; set; }
-    public MetaContext meta { get; set; }
 
-    public Entitas.IContext[] allContexts { get { return new Entitas.IContext [] { game, input, meta }; } }
+    public Entitas.IContext[] allContexts { get { return new Entitas.IContext [] { game }; } }
 
     public Contexts() {
         game = new GameContext();
-        input = new InputContext();
-        meta = new MetaContext();
 
         var postConstructors = System.Linq.Enumerable.Where(
             GetType().GetMethods(),
@@ -60,31 +56,41 @@ public partial class Contexts : Entitas.IContexts {
 //------------------------------------------------------------------------------
 public partial class Contexts {
 
+    public const string ApplierStatusLink = "ApplierStatusLink";
     public const string EntityLink = "EntityLink";
     public const string Id = "Id";
 
     [Entitas.CodeGeneration.Attributes.PostConstructor]
     public void InitializeEntityIndices() {
         game.AddEntityIndex(new Entitas.EntityIndex<GameEntity, int>(
+            ApplierStatusLink,
+            game.GetGroup(GameMatcher.ApplierStatusLink),
+            (e, c) => ((Code.Gameplay.Features.Statuses.ApplierStatusLink)c).Value));
+
+        game.AddEntityIndex(new Entitas.EntityIndex<GameEntity, int>(
             EntityLink,
             game.GetGroup(GameMatcher.EntityLink),
-            (e, c) => ((Code.Gameplay.Common.EntityLink)c).value));
+            (e, c) => ((Code.Gameplay.Common.EntityLink)c).Value));
 
         game.AddEntityIndex(new Entitas.PrimaryEntityIndex<GameEntity, int>(
             Id,
             game.GetGroup(GameMatcher.Id),
-            (e, c) => ((Code.Gameplay.Common.Id)c).id));
+            (e, c) => ((Code.Gameplay.Common.Id)c).Value));
     }
 }
 
 public static class ContextsExtensions {
 
-    public static System.Collections.Generic.HashSet<GameEntity> GetEntitiesWithEntityLink(this GameContext context, int value) {
-        return ((Entitas.EntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.EntityLink)).GetEntities(value);
+    public static System.Collections.Generic.HashSet<GameEntity> GetEntitiesWithApplierStatusLink(this GameContext context, int Value) {
+        return ((Entitas.EntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.ApplierStatusLink)).GetEntities(Value);
     }
 
-    public static GameEntity GetEntityWithId(this GameContext context, int id) {
-        return ((Entitas.PrimaryEntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntity(id);
+    public static System.Collections.Generic.HashSet<GameEntity> GetEntitiesWithEntityLink(this GameContext context, int Value) {
+        return ((Entitas.EntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.EntityLink)).GetEntities(Value);
+    }
+
+    public static GameEntity GetEntityWithId(this GameContext context, int Value) {
+        return ((Entitas.PrimaryEntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntity(Value);
     }
 }
 //------------------------------------------------------------------------------
@@ -103,8 +109,6 @@ public partial class Contexts {
     public void InitializeContextObservers() {
         try {
             CreateContextObserver(game);
-            CreateContextObserver(input);
-            CreateContextObserver(meta);
         } catch(System.Exception e) {
             UnityEngine.Debug.LogError(e);
         }

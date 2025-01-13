@@ -25,7 +25,7 @@ namespace Code.Gameplay.Features.Movement.Systems
     {
       foreach (GameEntity entity in _movers)
       {
-        entity.ReplaceWorldPosition((Vector2)entity.worldPosition.value + entity.Direction * entity.Speed * _time.DeltaTime);
+        entity.ReplaceWorldPosition((Vector2)entity.WorldPosition + entity.Direction * entity.Speed * _time.DeltaTime);
       }
     }
   }

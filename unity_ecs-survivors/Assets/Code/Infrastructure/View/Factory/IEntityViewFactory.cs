@@ -1,8 +1,8 @@
-﻿namespace Code.Infrastructure.View.Factory
+namespace Code.Infrastructure.View.Factory
 {
-public interface IEntityViewFactory
-{
+  public interface IEntityViewFactory
+  {
     EntityBehaviour CreateViewForEntity(GameEntity entity);
     EntityBehaviour CreateViewForEntityFromPrefab(GameEntity entity);
-}
+  }
 }

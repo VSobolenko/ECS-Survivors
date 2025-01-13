@@ -3,13 +3,14 @@ using Code.Infrastructure.Systems;
 
 namespace Code.Common.Destruct
 {
-public class ProcessDestructedFeature : Feature
-{
-    public ProcessDestructedFeature(ISystemFactory systemFactory)
+  public class ProcessDestructedFeature : Feature
+  {
+    public ProcessDestructedFeature(ISystemFactory systems)
     {
-        Add(systemFactory.Create<SelfDestructSystem>());
-        Add(systemFactory.Create<CleanupGameDestructedViewSystem>());
-        Add(systemFactory.Create<CleanupGameDestructedSystem>());
+      Add(systems.Create<SelfDestructTimerSystem>());
+      
+      Add(systems.Create<CleanupGameDestructedViewSystem>());
+      Add(systems.Create<CleanupGameDestructedSystem>());
     }
-}
+  }
 }
