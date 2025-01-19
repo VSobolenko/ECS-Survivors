@@ -14,71 +14,86 @@ public static class GameComponentsLookup {
     public const int View = 3;
     public const int ViewPath = 4;
     public const int ViewPrefab = 5;
-    public const int Damage = 6;
-    public const int DamageTakenAnimator = 7;
-    public const int EntityLink = 8;
-    public const int Id = 9;
-    public const int SpriteRenderer = 10;
-    public const int StatusVisuals = 11;
-    public const int Transform = 12;
-    public const int WorldPosition = 13;
-    public const int AbilityId = 14;
-    public const int VegetableBoltAbility = 15;
-    public const int Armament = 16;
-    public const int EffectSetups = 17;
-    public const int Processed = 18;
-    public const int StatusSetups = 19;
-    public const int TargetLimit = 20;
-    public const int BaseStats = 21;
-    public const int StatChange = 22;
-    public const int StatModifiers = 23;
-    public const int Cooldown = 24;
-    public const int CooldownLeft = 25;
-    public const int CooldownUp = 26;
-    public const int DamageEffect = 27;
-    public const int Effect = 28;
-    public const int EffectValue = 29;
-    public const int ProducerId = 30;
-    public const int TargetId = 31;
-    public const int Enemy = 32;
-    public const int EnemyAnimator = 33;
-    public const int EnemyTypeId = 34;
-    public const int SpawnTimer = 35;
-    public const int Hero = 36;
-    public const int HeroAnimator = 37;
-    public const int CurrentHp = 38;
-    public const int Dead = 39;
-    public const int MaxHp = 40;
-    public const int ProcessingDeath = 41;
-    public const int Direction = 42;
-    public const int MovementAvailable = 43;
-    public const int Moving = 44;
-    public const int RotationAlignedAlongDirection = 45;
-    public const int Speed = 46;
-    public const int TurnedAlongDirection = 47;
-    public const int Affected = 48;
-    public const int Applied = 49;
-    public const int ApplierStatusLink = 50;
-    public const int Duration = 51;
-    public const int Freeze = 52;
-    public const int Period = 53;
-    public const int Poison = 54;
-    public const int Status = 55;
-    public const int StatusTypeId = 56;
-    public const int TimeLeft = 57;
-    public const int TimeSinceLastTick = 58;
-    public const int Unapplied = 59;
-    public const int CollectingTargetsContinuously = 60;
-    public const int CollectTargetsInterval = 61;
-    public const int CollectTargetsTimer = 62;
-    public const int LayerMask = 63;
-    public const int ProcessedTargets = 64;
-    public const int ReadyToCollectTargets = 65;
-    public const int TargetBuffer = 66;
-    public const int AxisInput = 67;
-    public const int Input = 68;
+    public const int Active = 6;
+    public const int Damage = 7;
+    public const int DamageTakenAnimator = 8;
+    public const int EntityLink = 9;
+    public const int Id = 10;
+    public const int SpriteRenderer = 11;
+    public const int StatusVisuals = 12;
+    public const int Transform = 13;
+    public const int WorldPosition = 14;
+    public const int AbilityId = 15;
+    public const int GarlicAuraAbility = 16;
+    public const int OrbitingMushroomAbility = 17;
+    public const int ParentAbility = 18;
+    public const int VegetableBoltAbility = 19;
+    public const int Armament = 20;
+    public const int EffectSetups = 21;
+    public const int FollowingProducer = 22;
+    public const int Processed = 23;
+    public const int StatusSetups = 24;
+    public const int TargetLimit = 25;
+    public const int BaseStats = 26;
+    public const int StatChange = 27;
+    public const int StatModifiers = 28;
+    public const int Cooldown = 29;
+    public const int CooldownLeft = 30;
+    public const int CooldownUp = 31;
+    public const int DamageEffect = 32;
+    public const int Effect = 33;
+    public const int EffectValue = 34;
+    public const int HealEffect = 35;
+    public const int ProducerId = 36;
+    public const int TargetId = 37;
+    public const int EnchantTypeId = 38;
+    public const int EnchantVisuals = 39;
+    public const int ExplosiveEnchant = 40;
+    public const int PoisonEnchant = 41;
+    public const int Enemy = 42;
+    public const int EnemyAnimator = 43;
+    public const int EnemyTypeId = 44;
+    public const int SpawnTimer = 45;
+    public const int Hero = 46;
+    public const int HeroAnimator = 47;
+    public const int CurrentHp = 48;
+    public const int Dead = 49;
+    public const int MaxHp = 50;
+    public const int ProcessingDeath = 51;
+    public const int Direction = 52;
+    public const int MovementAvailable = 53;
+    public const int Moving = 54;
+    public const int OrbitCenterFollowTarget = 55;
+    public const int OrbitCenterPosition = 56;
+    public const int OrbitPhase = 57;
+    public const int OrbitRadius = 58;
+    public const int RotationAlignedAlongDirection = 59;
+    public const int Speed = 60;
+    public const int TurnedAlongDirection = 61;
+    public const int Affected = 62;
+    public const int Applied = 63;
+    public const int ApplierStatusLink = 64;
+    public const int Duration = 65;
+    public const int Freeze = 66;
+    public const int Period = 67;
+    public const int Poison = 68;
+    public const int Status = 69;
+    public const int StatusTypeId = 70;
+    public const int TimeLeft = 71;
+    public const int TimeSinceLastTick = 72;
+    public const int Unapplied = 73;
+    public const int CollectingTargetsContinuously = 74;
+    public const int CollectTargetsInterval = 75;
+    public const int CollectTargetsTimer = 76;
+    public const int LayerMask = 77;
+    public const int ProcessedTargets = 78;
+    public const int Reached = 79;
+    public const int ReadyToCollectTargets = 80;
+    public const int TargetBuffer = 81;
+    public const int AxisInput = 82;
+    public const int Input = 83;
 
-    public const int TotalComponents = 69;
+    public const int TotalComponents = 84;
 
     public static readonly string[] componentNames = {
         "Destructed",
@@ -87,6 +102,7 @@ public static class GameComponentsLookup {
         "View",
         "ViewPath",
         "ViewPrefab",
+        "Active",
         "Damage",
         "DamageTakenAnimator",
         "EntityLink",
@@ -96,9 +112,13 @@ public static class GameComponentsLookup {
         "Transform",
         "WorldPosition",
         "AbilityId",
+        "GarlicAuraAbility",
+        "OrbitingMushroomAbility",
+        "ParentAbility",
         "VegetableBoltAbility",
         "Armament",
         "EffectSetups",
+        "FollowingProducer",
         "Processed",
         "StatusSetups",
         "TargetLimit",
@@ -111,8 +131,13 @@ public static class GameComponentsLookup {
         "DamageEffect",
         "Effect",
         "EffectValue",
+        "HealEffect",
         "ProducerId",
         "TargetId",
+        "EnchantTypeId",
+        "EnchantVisuals",
+        "ExplosiveEnchant",
+        "PoisonEnchant",
         "Enemy",
         "EnemyAnimator",
         "EnemyTypeId",
@@ -126,6 +151,10 @@ public static class GameComponentsLookup {
         "Direction",
         "MovementAvailable",
         "Moving",
+        "OrbitCenterFollowTarget",
+        "OrbitCenterPosition",
+        "OrbitPhase",
+        "OrbitRadius",
         "RotationAlignedAlongDirection",
         "Speed",
         "TurnedAlongDirection",
@@ -146,6 +175,7 @@ public static class GameComponentsLookup {
         "CollectTargetsTimer",
         "LayerMask",
         "ProcessedTargets",
+        "Reached",
         "ReadyToCollectTargets",
         "TargetBuffer",
         "AxisInput",
@@ -159,6 +189,7 @@ public static class GameComponentsLookup {
         typeof(Code.Common.View),
         typeof(Code.Common.ViewPath),
         typeof(Code.Common.ViewPrefab),
+        typeof(Code.Gameplay.Common.Active),
         typeof(Code.Gameplay.Common.Damage),
         typeof(Code.Gameplay.Common.DamageTakenAnimator),
         typeof(Code.Gameplay.Common.EntityLink),
@@ -168,9 +199,13 @@ public static class GameComponentsLookup {
         typeof(Code.Gameplay.Common.TransformComponent),
         typeof(Code.Gameplay.Common.WorldPosition),
         typeof(Code.Gameplay.Features.Abilities.AbilityIdComponent),
+        typeof(Code.Gameplay.Features.Abilities.GarlicAuraAbility),
+        typeof(Code.Gameplay.Features.Abilities.OrbitingMushroomAbility),
+        typeof(Code.Gameplay.Features.Abilities.ParentAbility),
         typeof(Code.Gameplay.Features.Abilities.VegetableBoltAbility),
         typeof(Code.Gameplay.Features.Armaments.Armament),
         typeof(Code.Gameplay.Features.Armaments.EffectSetups),
+        typeof(Code.Gameplay.Features.Armaments.FollowingProducer),
         typeof(Code.Gameplay.Features.Armaments.Processed),
         typeof(Code.Gameplay.Features.Armaments.StatusSetups),
         typeof(Code.Gameplay.Features.Armaments.TargetLimit),
@@ -183,8 +218,13 @@ public static class GameComponentsLookup {
         typeof(Code.Gameplay.Features.Effects.DamageEffect),
         typeof(Code.Gameplay.Features.Effects.Effect),
         typeof(Code.Gameplay.Features.Effects.EffectValue),
+        typeof(Code.Gameplay.Features.Effects.HealEffect),
         typeof(Code.Gameplay.Features.Effects.ProducerId),
         typeof(Code.Gameplay.Features.Effects.TargetId),
+        typeof(Code.Gameplay.Features.Enchants.EnchantTypeIdComponent),
+        typeof(Code.Gameplay.Features.Enchants.EnchantVisualsComponent),
+        typeof(Code.Gameplay.Features.Enchants.ExplosiveEnchant),
+        typeof(Code.Gameplay.Features.Enchants.PoisonEnchant),
         typeof(Code.Gameplay.Features.Enemies.Enemy),
         typeof(Code.Gameplay.Features.Enemies.EnemyAnimatorComponent),
         typeof(Code.Gameplay.Features.Enemies.EnemyTypeIdComponent),
@@ -198,6 +238,10 @@ public static class GameComponentsLookup {
         typeof(Code.Gameplay.Features.Movement.Direction),
         typeof(Code.Gameplay.Features.Movement.MovementAvailable),
         typeof(Code.Gameplay.Features.Movement.Moving),
+        typeof(Code.Gameplay.Features.Movement.OrbitCenterFollowTarget),
+        typeof(Code.Gameplay.Features.Movement.OrbitCenterPosition),
+        typeof(Code.Gameplay.Features.Movement.OrbitPhase),
+        typeof(Code.Gameplay.Features.Movement.OrbitRadius),
         typeof(Code.Gameplay.Features.Movement.RotationAlignedAlongDirection),
         typeof(Code.Gameplay.Features.Movement.Speed),
         typeof(Code.Gameplay.Features.Movement.TurnedAlongDirection),
@@ -218,6 +262,7 @@ public static class GameComponentsLookup {
         typeof(Code.Gameplay.Features.TargetCollection.CollectTargetsTimer),
         typeof(Code.Gameplay.Features.TargetCollection.LayerMask),
         typeof(Code.Gameplay.Features.TargetCollection.ProcessedTargets),
+        typeof(Code.Gameplay.Features.TargetCollection.Reached),
         typeof(Code.Gameplay.Features.TargetCollection.ReadyToCollectTargets),
         typeof(Code.Gameplay.Features.TargetCollection.TargetBuffer),
         typeof(Code.Gameplay.Input.AxisInput),
