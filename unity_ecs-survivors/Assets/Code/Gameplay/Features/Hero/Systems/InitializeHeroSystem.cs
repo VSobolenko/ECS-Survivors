@@ -1,28 +1,21 @@
-using Code.Gameplay.Features.Abilities.Factory;
-using Code.Gameplay.Features.Hero.Factory;
-using Code.Gameplay.Features.Statuses;
-using Code.Gameplay.Levels;
+using Code.Gameplay.Features.Abilities;
+using Code.Gameplay.Features.Abilities.Upgrade;
 using Entitas;
 
 namespace Code.Gameplay.Features.Hero.Systems
 {
   public class InitializeHeroSystem : IInitializeSystem
   {
-    private readonly IHeroFactory _heroFactory;
-    private readonly ILevelDataProvider _levelDataProvider;
-    private readonly IAbilityFactory _abilityFactory;
+    private readonly IAbilityUpgradeService _abilityUpgradeService;
 
-    public InitializeHeroSystem(IHeroFactory heroFactory, ILevelDataProvider levelDataProvider, IAbilityFactory abilityFactory)
+    public InitializeHeroSystem(IAbilityUpgradeService abilityUpgradeService)
     {
-      _heroFactory = heroFactory;
-      _levelDataProvider = levelDataProvider;
-      _abilityFactory = abilityFactory;
+      _abilityUpgradeService = abilityUpgradeService;
     }
     
     public void Initialize()
     {
-      _heroFactory.CreateHero(_levelDataProvider.StartPoint);
-      _abilityFactory.CreateVegetableBoltAbility(level: 1);
+      _abilityUpgradeService.InitializeAbility(AbilityId.VegetableBolt);
     }
   }
 }

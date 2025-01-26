@@ -22,11 +22,15 @@ public partial class Contexts : Entitas.IContexts {
     static Contexts _sharedInstance;
 
     public GameContext game { get; set; }
+    public InputContext input { get; set; }
+    public MetaContext meta { get; set; }
 
-    public Entitas.IContext[] allContexts { get { return new Entitas.IContext [] { game }; } }
+    public Entitas.IContext[] allContexts { get { return new Entitas.IContext [] { game, input, meta }; } }
 
     public Contexts() {
         game = new GameContext();
+        input = new InputContext();
+        meta = new MetaContext();
 
         var postConstructors = System.Linq.Enumerable.Where(
             GetType().GetMethods(),
@@ -77,6 +81,10 @@ public partial class Contexts {
             Id,
             game.GetGroup(GameMatcher.Id),
             (e, c) => ((Code.Gameplay.Common.Id)c).Value));
+        meta.AddEntityIndex(new Entitas.PrimaryEntityIndex<MetaEntity, int>(
+            Id,
+            meta.GetGroup(MetaMatcher.Id),
+            (e, c) => ((Code.Gameplay.Common.Id)c).Value));
 
         game.AddEntityIndex(new Entitas.EntityIndex<GameEntity, Code.Gameplay.Features.Abilities.AbilityId>(
             ParentAbility,
@@ -99,6 +107,10 @@ public static class ContextsExtensions {
         return ((Entitas.PrimaryEntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntity(Value);
     }
 
+    public static MetaEntity GetEntityWithId(this MetaContext context, int Value) {
+        return ((Entitas.PrimaryEntityIndex<MetaEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntity(Value);
+    }
+
     public static System.Collections.Generic.HashSet<GameEntity> GetEntitiesWithParentAbility(this GameContext context, Code.Gameplay.Features.Abilities.AbilityId Value) {
         return ((Entitas.EntityIndex<GameEntity, Code.Gameplay.Features.Abilities.AbilityId>)context.GetEntityIndex(Contexts.ParentAbility)).GetEntities(Value);
     }
@@ -119,6 +131,8 @@ public partial class Contexts {
     public void InitializeContextObservers() {
         try {
             CreateContextObserver(game);
+            CreateContextObserver(input);
+            CreateContextObserver(meta);
         } catch(System.Exception e) {
             UnityEngine.Debug.LogError(e);
         }
